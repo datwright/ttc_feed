@@ -22,8 +22,12 @@ module TtcUrls
   end
 
   # route_tag = "512"
-  def self.vehicle_locations(route_tag)
-    base.command("vehicleLocations").a("ttc").r(route_tag).to_s
+  def self.vehicle_locations(route_tag, last_timestamp = nil)
+    url = base.command("vehicleLocations").a("ttc").r(route_tag)
+
+    url = url.t(last_timestamp) if last_timestamp
+
+    url.to_s
   end
 
 end

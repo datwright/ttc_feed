@@ -3,9 +3,9 @@ require 'faraday'
 require 'nokogiri'
 
 module TtcFeed
-  def self.streetcar_xml_data
+  def self.streetcar_xml_data(last_timestamp = nil)
     [
-      ["512", Faraday.get(TtcUrls.vehicle_locations("512")).body]
+      ["512", Faraday.get(TtcUrls.vehicle_locations("512", last_timestamp)).body]
     ]
   end
 
